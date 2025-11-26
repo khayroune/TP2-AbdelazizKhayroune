@@ -1,16 +1,19 @@
-name: GitHub CI Test
+name: CI Test Simple
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  build:
+  test-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Récupérer le code
         uses: actions/checkout@v3
 
-      - name: Run a simple test
-        run: echo "Workflow executed successfully"
+      - name: Donner les permissions
+        run: chmod +x test.sh
+
+      - name: Lancer le test
+        run: ./test.sh
